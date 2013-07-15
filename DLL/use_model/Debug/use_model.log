@@ -1,0 +1,26 @@
+﻿Построение начато 01.04.2013 23:07:49.
+     1>Проект "E:\c++\WSI\DLL\use_model\use_model.vcxproj" в узле 2 (целевые объекты build).
+     1>InitializeBuildStatus:
+         Создание "Debug\use_model.unsuccessfulbuild", так как было задано "AlwaysCreate".
+       ClCompile:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\main.cpp
+         main.cpp
+       ManifestResourceCompile:
+         Для всех выходных данных обновления не требуется.
+       Link:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\c++\WSI\DLL\use_model\Debug\use_model.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\use_model.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"E:\c++\WSI\DLL\use_model\Debug\use_model.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\c++\WSI\DLL\use_model\Debug\use_model.lib" /MACHINE:X86 Debug\use_model.exe.embed.manifest.res
+         Debug\main.obj
+       Manifest:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\use_model.exe.embed.manifest" /manifest Debug\use_model.exe.intermediate.manifest
+         Для всех выходных данных обновления не требуется.
+       LinkEmbedManifest:
+         Для всех выходных данных обновления не требуется.
+         use_model.vcxproj -> E:\c++\WSI\DLL\use_model\Debug\use_model.exe
+       FinalizeBuildStatus:
+         Файл "Debug\use_model.unsuccessfulbuild" удаляется.
+         Обращение к "Debug\use_model.lastbuildstate".
+     1>Построение проекта "E:\c++\WSI\DLL\use_model\use_model.vcxproj" завершено (целевые объекты build).
+
+Построение успешно завершено.
+
+Затраченное время: 00:00:02.53
