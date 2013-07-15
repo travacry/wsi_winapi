@@ -1,0 +1,4 @@
+LIBRARY "model.dll"
+EXPORTS getListCurrObjs
+EXPORTS getListMapObjsWin
+EXPORTS getListAccess
