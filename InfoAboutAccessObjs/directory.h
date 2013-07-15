@@ -27,7 +27,7 @@ declare_member(FILE_TRAVERSE) member_value(0x0020) delimiter
 declare_member(FILE_DELETE_CHILD) member_value(0x0040) delimiter
 declare_member(FILE_READ_ATTRIBUTES) member_value(0x0080) delimiter
 declare_member(FILE_WRITE_ATTRIBUTES) member_value(0x0100) delimiter
-//		!@т.к индификатор уже определен можно использовать =>
+//		!@С‚.Рє РёРЅРґРёС„РёРєР°С‚РѕСЂ СѓР¶Рµ РѕРїСЂРµРґРµР»РµРЅ РјРѕР¶РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ =>
 declare_member(FILE_ALL_ACCESS) member_value(STANDARD_RIGHTS_REQUIRED | SYNCHRONIZE | 0x1FF)
 enumeration_end;
 #include "../CreateMassArray/enum_helper_post.h"

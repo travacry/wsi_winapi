@@ -1,19 +1,19 @@
 #include "winapi.h"
-//Источники : http://www.powerbasic.com/support/pbforums/showthread.php?p=262465
+//РСЃС‚РѕС‡РЅРёРєРё : http://www.powerbasic.com/support/pbforums/showthread.php?p=262465
 #define	  stop __asm nop
 
 int wmain(int argc, WCHAR *argv[])
 {
-	//импорт из библиотек Native-API функции:
+	//РёРјРїРѕСЂС‚ РёР· Р±РёР±Р»РёРѕС‚РµРє Native-API С„СѓРЅРєС†РёРё:
 
-	//получение информации о системе
+	//РїРѕР»СѓС‡РµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃРёСЃС‚РµРјРµ
     _NtQuerySystemInformation NtQuerySystemInformation = (_NtQuerySystemInformation)
         GetLibraryProcAddress("ntdll.dll", "NtQuerySystemInformation");
-	//для копирования хендла в текущий процесс
+	//РґР»СЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ С…РµРЅРґР»Р° РІ С‚РµРєСѓС‰РёР№ РїСЂРѕС†РµСЃСЃ
     _NtDuplicateObject NtDuplicateObject = (_NtDuplicateObject)
         GetLibraryProcAddress("ntdll.dll", "NtDuplicateObject");
-	//получает некоторую информацию об одном или нескольких объектах. 
-	//открытых вызывающим процесом
+	//РїРѕР»СѓС‡Р°РµС‚ РЅРµРєРѕС‚РѕСЂСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ РѕР± РѕРґРЅРѕРј РёР»Рё РЅРµСЃРєРѕР»СЊРєРёС… РѕР±СЉРµРєС‚Р°С…. 
+	//РѕС‚РєСЂС‹С‚С‹С… РІС‹Р·С‹РІР°СЋС‰РёРј РїСЂРѕС†РµСЃРѕРј
     _NtQueryObject NtQueryObject = (_NtQueryObject)
         GetLibraryProcAddress("ntdll.dll", "NtQueryObject");
 

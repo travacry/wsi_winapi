@@ -43,7 +43,7 @@ int main(){
 	string s2("test2"); 
 	string s3("test3"); 
 
-	//прсит все обьекты
+	//РїСЂСЃРёС‚ РІСЃРµ РѕР±СЊРµРєС‚С‹
 	mObj.ParserObjs();
 	mObj.ParserAccess("Directory");
 	mObj.ParserMap(Win2000);

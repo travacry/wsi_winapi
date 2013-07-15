@@ -10,9 +10,9 @@
 
 //parsing all win objects-type (from map's win)
 
-//@здесь используется хеадеры без .cpp по той причине,
-//@что используются макросы и для препроцессора подключение .cpp -
-//@повторное включение хедера с переинициализацией emum || array
+//@Р·РґРµСЃСЊ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ С…РµР°РґРµСЂС‹ Р±РµР· .cpp РїРѕ С‚РѕР№ РїСЂРёС‡РёРЅРµ,
+//@С‡С‚Рѕ РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ РјР°РєСЂРѕСЃС‹ Рё РґР»СЏ РїСЂРµРїСЂРѕС†РµСЃСЃРѕСЂР° РїРѕРґРєР»СЋС‡РµРЅРёРµ .cpp -
+//@РїРѕРІС‚РѕСЂРЅРѕРµ РІРєР»СЋС‡РµРЅРёРµ С…РµРґРµСЂР° СЃ РїРµСЂРµРёРЅРёС†РёР°Р»РёР·Р°С†РёРµР№ emum || array
 
 //******************************************************
 
@@ -30,14 +30,14 @@
 		BYTE 		m_Flags;
 		USHORT 		m_Handle;
 		PVOID 		m_Object;
-		ACCESS_MASK m_GrantedAccess;		//	все спецификаторы доступа выбранного обьекта
+		ACCESS_MASK m_GrantedAccess;		//	РІСЃРµ СЃРїРµС†РёС„РёРєР°С‚РѕСЂС‹ РґРѕСЃС‚СѓРїР° РІС‹Р±СЂР°РЅРЅРѕРіРѕ РѕР±СЊРµРєС‚Р°
 
-		PACKAGE		m_Package;				//	вся инфа
+		PACKAGE		m_Package;				//	РІСЃСЏ РёРЅС„Р°
 
-		size_t		m_Size_stAcc;			//	размер структуры (для всех структур одинаков)
+		size_t		m_Size_stAcc;			//	СЂР°Р·РјРµСЂ СЃС‚СЂСѓРєС‚СѓСЂС‹ (РґР»СЏ РІСЃРµС… СЃС‚СЂСѓРєС‚СѓСЂ РѕРґРёРЅР°РєРѕРІ)
 
 
-											//	рамеры созданных массивов спецификаторов доступа(макросы):
+											//	СЂР°РјРµСЂС‹ СЃРѕР·РґР°РЅРЅС‹С… РјР°СЃСЃРёРІРѕРІ СЃРїРµС†РёС„РёРєР°С‚РѕСЂРѕРІ РґРѕСЃС‚СѓРїР°(РјР°РєСЂРѕСЃС‹):
 		size_t		countStandartARights;	
 		size_t		countBaseARights;		
 		size_t		countDesktopSARights;
@@ -72,16 +72,16 @@
 
 //******************************************************
 
-//инициализация
+//РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ
 CWinObj::CWinObj()
 {
 	m_ProcessId=m_ObjectTypeNumber=m_Flags=m_Handle=0;
 	m_Object=nullptr;
 	m_GrantedAccess=0;
 	m_Package.Special=m_Package.Sandart=m_Package.Base="";
-	m_Size_stAcc = sizeof(stBaseARights); //размер структуры
+	m_Size_stAcc = sizeof(stBaseARights); //СЂР°Р·РјРµСЂ СЃС‚СЂСѓРєС‚СѓСЂС‹
 
-//		!определение размеров полученных массивов - спецификаторов доступа
+//		!РѕРїСЂРµРґРµР»РµРЅРёРµ СЂР°Р·РјРµСЂРѕРІ РїРѕР»СѓС‡РµРЅРЅС‹С… РјР°СЃСЃРёРІРѕРІ - СЃРїРµС†РёС„РёРєР°С‚РѕСЂРѕРІ РґРѕСЃС‚СѓРїР°
 
 	countStandartARights =		sizeof(StandartARights_strs) / sizeof(stBaseARights);
 	countBaseARights =			sizeof(BaseARights_strs) / sizeof(stBaseARights);
@@ -124,14 +124,14 @@ CWinObj& CWinObj::operator=(const PSYSTEM_HANDLE right)
 	return *this;
 }
 
-//поучение пакета данных
+//РїРѕСѓС‡РµРЅРёРµ РїР°РєРµС‚Р° РґР°РЅРЅС‹С…
 PACKAGE& CWinObj::GetPackageInfo(VERWIN ver)
 {
-	//получить обьект
+	//РїРѕР»СѓС‡РёС‚СЊ РѕР±СЊРµРєС‚
 	switch(ver)
 	{
 
-//		!выбор по картам обьектов Windows
+//		!РІС‹Р±РѕСЂ РїРѕ РєР°СЂС‚Р°Рј РѕР±СЊРµРєС‚РѕРІ Windows
 		case Win2000:
 			m_Package.ObjName = Win2000_strs[m_ObjectTypeNumber-1].text;
 		break;
@@ -143,7 +143,7 @@ PACKAGE& CWinObj::GetPackageInfo(VERWIN ver)
 		break;
 
 	}
-//		!получение по маске доспупа спец. дост.
+//		!РїРѕР»СѓС‡РµРЅРёРµ РїРѕ РјР°СЃРєРµ РґРѕСЃРїСѓРїР° СЃРїРµС†. РґРѕСЃС‚.
 //		!1111 (28-31) . 111 (25-27) . 1 (24) . 1 (23) 
 //		!. 111 1111 (22-16) . 1111 1111 1111 1111 (0-15)
 
@@ -151,21 +151,21 @@ PACKAGE& CWinObj::GetPackageInfo(VERWIN ver)
 	DWORD SpecialAccessRights =		SPECIAL_GM(m_GrantedAccess);
 	DWORD BasicAccessRights =		BASE_GM(m_GrantedAccess);
 
-//		!прозапас+)
+//		!РїСЂРѕР·Р°РїР°СЃ+)
 	DWORD Audit =					AUDIT_GM(m_GrantedAccess);
 	DWORD MaximumAllowable =		MAXALLOWABLE_GM(m_GrantedAccess);
 	DWORD Reserve =					RESERVE_GM(m_GrantedAccess);
 	
-//		!1.получение стандартных прав:
+//		!1.РїРѕР»СѓС‡РµРЅРёРµ СЃС‚Р°РЅРґР°СЂС‚РЅС‹С… РїСЂР°РІ:
 
 	setInfoAccess(	StandartARights_strs, 
 					countStandartARights, 
 					StandardAccessRights, 
 					StandardAR);
 
-//		!2.дополнительные специальные права (полные и тд):
+//		!2.РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРїРµС†РёР°Р»СЊРЅС‹Рµ РїСЂР°РІР° (РїРѕР»РЅС‹Рµ Рё С‚Рґ):
 
-//		!получение специальных прав
+//		!РїРѕР»СѓС‡РµРЅРёРµ СЃРїРµС†РёР°Р»СЊРЅС‹С… РїСЂР°РІ
 	for (;;)
 	{
 
@@ -234,7 +234,7 @@ PACKAGE& CWinObj::GetPackageInfo(VERWIN ver)
 
 	}
 
-//		!3.получение базовых прав (BaseARights):
+//		!3.РїРѕР»СѓС‡РµРЅРёРµ Р±Р°Р·РѕРІС‹С… РїСЂР°РІ (BaseARights):
 
 	setInfoAccess(BaseARights_strs, countBaseARights, 
 		StandardAccessRights, BasicAR);
@@ -245,11 +245,11 @@ PACKAGE& CWinObj::GetPackageInfo(VERWIN ver)
 	return m_Package;
 }
 
-//		!Выборка информации и сохранение
-//		!ArrayAcc - массив элементов
-//		!size_el - счетчик элементов
-//		!val - искомое значение
-//		!type - тип доспупа
+//		!Р’С‹Р±РѕСЂРєР° РёРЅС„РѕСЂРјР°С†РёРё Рё СЃРѕС…СЂР°РЅРµРЅРёРµ
+//		!ArrayAcc - РјР°СЃСЃРёРІ СЌР»РµРјРµРЅС‚РѕРІ
+//		!size_el - СЃС‡РµС‚С‡РёРє СЌР»РµРјРµРЅС‚РѕРІ
+//		!val - РёСЃРєРѕРјРѕРµ Р·РЅР°С‡РµРЅРёРµ
+//		!type - С‚РёРї РґРѕСЃРїСѓРїР°
 
 void CWinObj::setInfoAccess(void* ArrayAcc, size_t size_el, int val, TYPEACCESS type){
 
@@ -259,7 +259,7 @@ void CWinObj::setInfoAccess(void* ArrayAcc, size_t size_el, int val, TYPEACCESS 
 	{
 		if (pSt[i].val	== val){ 
 			switch(type){
-//		!получение имени из массива st_*******. (прим: собственно это все зачем так мудрил)
+//		!РїРѕР»СѓС‡РµРЅРёРµ РёРјРµРЅРё РёР· РјР°СЃСЃРёРІР° st_*******. (РїСЂРёРј: СЃРѕР±СЃС‚РІРµРЅРЅРѕ СЌС‚Рѕ РІСЃРµ Р·Р°С‡РµРј С‚Р°Рє РјСѓРґСЂРёР»)
 				case SpecialAR:
 					m_Package.Special = pSt[i].text;
 				break;

@@ -42,10 +42,10 @@
 
 		void ParserAccess(string type);
 
-		void getPack(list<PACKAGE>& data);					//*выходной пакет
+		void getPack(list<PACKAGE>& data);					//*РІС‹С…РѕРґРЅРѕР№ РїР°РєРµС‚
 
-															//@можно просматривать win карты
-															//@и карты спецификаторов доступа:
+															//@РјРѕР¶РЅРѕ РїСЂРѕСЃРјР°С‚СЂРёРІР°С‚СЊ win РєР°СЂС‚С‹
+															//@Рё РєР°СЂС‚С‹ СЃРїРµС†РёС„РёРєР°С‚РѕСЂРѕРІ РґРѕСЃС‚СѓРїР°:
 		void getMapWin(list<STBASE>& data, VERWIN ver);		
 
 		void getMapAccess(	list<STBASE>& data,				
@@ -67,11 +67,11 @@
 
 //******************************************************
 
-//ПОДКЛЮЧЕНИЕ БИБЛИОТЕК:
+//РџРћР”РљР›Р®Р§Р•РќРР• Р‘РР‘Р›РРћРўР•Рљ:
 
 CManagerObjs::CManagerObjs()
 {
-	//получение информации о системе
+	//РїРѕР»СѓС‡РµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃРёСЃС‚РµРјРµ
     NtQuerySystemInformation = (_NtQuerySystemInformation)
         GetLibraryProcAddress("ntdll.dll", "NtQuerySystemInformation");
 	
@@ -89,7 +89,7 @@ void CManagerObjs::ParserObjs()
 	CWinInfo m_wf;
 	VERWIN ver = m_wf.getVersion();
 
-	//проверка на первый
+	//РїСЂРѕРІРµСЂРєР° РЅР° РїРµСЂРІС‹Р№
 	PSYSTEM_HANDLE_INFORMATION pSysHandleInformation = new SYSTEM_HANDLE_INFORMATION;
     DWORD size = sizeof(SYSTEM_HANDLE_INFORMATION);
     DWORD needed = 0;
@@ -128,13 +128,13 @@ void CManagerObjs::ParserObjs()
 	delete pSysHandleInformation;
 }
 
-//очистить пакет
+//РѕС‡РёСЃС‚РёС‚СЊ РїР°РєРµС‚
 void CManagerObjs::Clear()
 {
 	m_pack.clear();
 }
 
-//заполнение win карт 
+//Р·Р°РїРѕР»РЅРµРЅРёРµ win РєР°СЂС‚ 
 void CManagerObjs::ParserMap(VERWIN ver)
 {
 	switch(ver){
@@ -150,10 +150,10 @@ void CManagerObjs::ParserMap(VERWIN ver)
 	}
 }
 
-//генерация списка обьектов
+//РіРµРЅРµСЂР°С†РёСЏ СЃРїРёСЃРєР° РѕР±СЊРµРєС‚РѕРІ
 void  CManagerObjs::Generation(void* pArr, list<STBASE>& list, size_t size)
 {
-//		!к общему типу для всех обектов
+//		!Рє РѕР±С‰РµРјСѓ С‚РёРїСѓ РґР»СЏ РІСЃРµС… РѕР±РµРєС‚РѕРІ
 	STBASE* pCur = static_cast<STBASE*>(pArr);
 
 	for(int i=0; i<size; i++){	
@@ -164,7 +164,7 @@ void  CManagerObjs::Generation(void* pArr, list<STBASE>& list, size_t size)
 	}
 }
 
-//генерирование специального спецификатора доступа
+//РіРµРЅРµСЂРёСЂРѕРІР°РЅРёРµ СЃРїРµС†РёР°Р»СЊРЅРѕРіРѕ СЃРїРµС†РёС„РёРєР°С‚РѕСЂР° РґРѕСЃС‚СѓРїР°
 void  CManagerObjs::GenerationSpec(list<STBASE>& list, string& type)
 {
 	for (;;)
@@ -220,7 +220,7 @@ void  CManagerObjs::GenerationSpec(list<STBASE>& list, string& type)
 	}	
 }
 
-//парсер спецификаторов доступа, заполняет: m_StandartAccess, m_BaseAccess, m_SpecAccess
+//РїР°СЂСЃРµСЂ СЃРїРµС†РёС„РёРєР°С‚РѕСЂРѕРІ РґРѕСЃС‚СѓРїР°, Р·Р°РїРѕР»РЅСЏРµС‚: m_StandartAccess, m_BaseAccess, m_SpecAccess
 void CManagerObjs::ParserAccess(string type)
 {
 	m_StandartAccess.clear();
@@ -239,7 +239,7 @@ void CManagerObjs::ParserAccess(string type)
 }
 
 
-//получение выходного пакета обьектов
+//РїРѕР»СѓС‡РµРЅРёРµ РІС‹С…РѕРґРЅРѕРіРѕ РїР°РєРµС‚Р° РѕР±СЊРµРєС‚РѕРІ
 void CManagerObjs::getPack(list<PACKAGE>& data)
 {
 
@@ -249,7 +249,7 @@ void CManagerObjs::getPack(list<PACKAGE>& data)
 
 }
 
-//получение карт обьектов определенной версии Windows
+//РїРѕР»СѓС‡РµРЅРёРµ РєР°СЂС‚ РѕР±СЊРµРєС‚РѕРІ РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ РІРµСЂСЃРёРё Windows
 void CManagerObjs::getMapWin(list<STBASE>& data, VERWIN ver)
 {
 	data.clear();
@@ -258,7 +258,7 @@ void CManagerObjs::getMapWin(list<STBASE>& data, VERWIN ver)
 	data = m_mapWin;
 }
 
-//получение карт спецификаторов доступа
+//РїРѕР»СѓС‡РµРЅРёРµ РєР°СЂС‚ СЃРїРµС†РёС„РёРєР°С‚РѕСЂРѕРІ РґРѕСЃС‚СѓРїР°
 void CManagerObjs::getMapAccess(list<STBASE>& data,TYPEACCESS type, string& objType) // { SpecialAR,StandardAR,BasicAR };
 {
 

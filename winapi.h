@@ -186,10 +186,10 @@ PVOID GetLibraryProcAddress(PSTR LibraryName, PSTR ProcName)
 	return GetProcAddress(GetModuleHandleA(LibraryName), ProcName);
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//определение версии Win
+//РѕРїСЂРµРґРµР»РµРЅРёРµ РІРµСЂСЃРёРё Win
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 enum VERWIN { WinXP, Win2000, WinNT };
-//для XP : 51 , для Win2000 : 50 , для NT : 40
+//РґР»СЏ XP : 51 , РґР»СЏ Win2000 : 50 , РґР»СЏ NT : 40
 VERWIN GetWinVersion(){
 	DWORD dwVersion = 0; 
     DWORD dwMajorVersion = 0;
@@ -213,7 +213,7 @@ VERWIN GetWinVersion(){
 	}
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//добавление информации о правах доступа к той инфе что уже есть
+//РґРѕР±Р°РІР»РµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РїСЂР°РІР°С… РґРѕСЃС‚СѓРїР° Рє С‚РѕР№ РёРЅС„Рµ С‡С‚Рѕ СѓР¶Рµ РµСЃС‚СЊ
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Resize(char*& sBase, char* str){
 	char* tmp = sBase;
@@ -228,7 +228,7 @@ void Resize(char*& sBase, char* str){
 	}
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//получение строки с правами доступа
+//РїРѕР»СѓС‡РµРЅРёРµ СЃС‚СЂРѕРєРё СЃ РїСЂР°РІР°РјРё РґРѕСЃС‚СѓРїР°
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void DirectorySARights(DWORD SpecialAccessRights, char* sTypeAccess){
 	switch (SpecialAccessRights){
@@ -451,7 +451,7 @@ void WmiGuidSARights(DWORD SpecialAccessRights, char* sTypeAccess)
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//получение строк для отображения по GrantedAccess прав доступ
+//РїРѕР»СѓС‡РµРЅРёРµ СЃС‚СЂРѕРє РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РїРѕ GrantedAccess РїСЂР°РІ РґРѕСЃС‚СѓРї
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void ChangeAccess(char*& sTypeAccess,const ACCESS_MASK GrantedAccess, 
 	const BYTE ObjectTypeNumber,const VERWIN ver){
@@ -459,11 +459,11 @@ void ChangeAccess(char*& sTypeAccess,const ACCESS_MASK GrantedAccess,
 
 	DWORD SpecialAccessRights =		GrantedAccess&0x0000ffff;	//0-15
 	DWORD StandardAccessRights =	GrantedAccess&0x007f0000;	//22-16
-	DWORD Audit =					GrantedAccess&0x00800000;	//23 доступ к системному списку контроля доступа
+	DWORD Audit =					GrantedAccess&0x00800000;	//23 РґРѕСЃС‚СѓРї Рє СЃРёСЃС‚РµРјРЅРѕРјСѓ СЃРїРёСЃРєСѓ РєРѕРЅС‚СЂРѕР»СЏ РґРѕСЃС‚СѓРїР°
 	DWORD MaximumAllowable =		GrantedAccess&0x01000000;	//24
 	DWORD Reserve =					GrantedAccess&0x0e000000;	//25-27
 	DWORD BasicAccessRights =		GrantedAccess&0xf0000000;	//28-31
-	//Стандартные права не меняются от обьекта к обьекту
+	//РЎС‚Р°РЅРґР°СЂС‚РЅС‹Рµ РїСЂР°РІР° РЅРµ РјРµРЅСЏСЋС‚СЃСЏ РѕС‚ РѕР±СЊРµРєС‚Р° Рє РѕР±СЊРµРєС‚Сѓ
 	sTypeAccess = nullptr;
 
 	switch (StandardAccessRights){
@@ -475,8 +475,8 @@ void ChangeAccess(char*& sTypeAccess,const ACCESS_MASK GrantedAccess,
 		case STANDARD_RIGHTS_REQUIRED	: Resize(sTypeAccess, "STANDARD_RIGHTS_REQUIRED");	break;
 		case STANDARD_RIGHTS_ALL		: Resize(sTypeAccess, "STANDARD_RIGHTS_ALL");		break;
 	}
-	//Специальные права - определение полного списка специальных прав,
-	//соответствующих обьекту
+	//РЎРїРµС†РёР°Р»СЊРЅС‹Рµ РїСЂР°РІР° - РѕРїСЂРµРґРµР»РµРЅРёРµ РїРѕР»РЅРѕРіРѕ СЃРїРёСЃРєР° СЃРїРµС†РёР°Р»СЊРЅС‹С… РїСЂР°РІ,
+	//СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёС… РѕР±СЊРµРєС‚Сѓ
 	if (ver == WinNT){
 	switch (ObjectTypeNumber) {
 		case 2 : /*"Directory"*/	
@@ -561,7 +561,7 @@ void ChangeAccess(char*& sTypeAccess,const ACCESS_MASK GrantedAccess,
 	}
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//определение обьекта по его типу ObjectTypeNumber и версии Win - ver
+//РѕРїСЂРµРґРµР»РµРЅРёРµ РѕР±СЊРµРєС‚Р° РїРѕ РµРіРѕ С‚РёРїСѓ ObjectTypeNumber Рё РІРµСЂСЃРёРё Win - ver
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void ChangeTab(char* sObjectType,BYTE ObjectTypeNumber, VERWIN ver){
 /*

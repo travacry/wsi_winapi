@@ -18,10 +18,10 @@
 #include <list>
 #include <iostream>
 
-//		!получить список открытых процессов
+//		!РїРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РѕС‚РєСЂС‹С‚С‹С… РїСЂРѕС†РµСЃСЃРѕРІ
 #define SystemHandleInformation 16
 
-//		!базовая структура для всех спецификаторов доступа
+//		!Р±Р°Р·РѕРІР°СЏ СЃС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ РІСЃРµС… СЃРїРµС†РёС„РёРєР°С‚РѕСЂРѕРІ РґРѕСЃС‚СѓРїР°
 #ifndef STBASE
 
 	typedef struct stBase_ 
@@ -67,7 +67,7 @@ typedef struct _SYSTEM_HANDLE_INFORMATION
 
 } SYSTEM_HANDLE_INFORMATION, *PSYSTEM_HANDLE_INFORMATION;
 
-//		!пакет данных
+//		!РїР°РєРµС‚ РґР°РЅРЅС‹С…
 
 #ifndef PACKAGE
 
@@ -85,7 +85,7 @@ typedef struct _SYSTEM_HANDLE_INFORMATION
 
 #endif
 
-//		!идентификатор версии windows
+//		!РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РІРµСЂСЃРёРё windows
 
 #ifndef VERWIN
 
@@ -93,7 +93,7 @@ typedef struct _SYSTEM_HANDLE_INFORMATION
 
 #endif
 
-//		!идентификаторы правил доступа
+//		!РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РїСЂР°РІРёР» РґРѕСЃС‚СѓРїР°
 
 #ifndef TYPEACCESS
 
@@ -108,11 +108,11 @@ typedef struct _SYSTEM_HANDLE_INFORMATION
 
 #endif
 
-//		!макросы для разбора маски доступа
+//		!РјР°РєСЂРѕСЃС‹ РґР»СЏ СЂР°Р·Р±РѕСЂР° РјР°СЃРєРё РґРѕСЃС‚СѓРїР°
 //		!1111 (28-31) . 111 (25-27) . 1 (24) . 1 (23) 
 //		!. 111 1111 (22-16) . 1111 1111 1111 1111 (0-15)
 
-//		!23 доступ к системному списку контроля доступа.
+//		!23 РґРѕСЃС‚СѓРї Рє СЃРёСЃС‚РµРјРЅРѕРјСѓ СЃРїРёСЃРєСѓ РєРѕРЅС‚СЂРѕР»СЏ РґРѕСЃС‚СѓРїР°.
 //		!GrantedAccess
 
 #define SPECIAL_GM(AM)		((DWORD)((AM) & 0x0000ffff)) //0-15
@@ -122,7 +122,7 @@ typedef struct _SYSTEM_HANDLE_INFORMATION
 #define RESERVE_GM(AM)		((DWORD)((AM) & 0x0e000000)) //25-27
 #define BASE_GM(AM)			((DWORD)((AM) & 0xf0000000)) //28-31
 
-//		!определение ошибки 0,< = false; > = true;
+//		!РѕРїСЂРµРґРµР»РµРЅРёРµ РѕС€РёР±РєРё 0,< = false; > = true;
 
 #define NT_SUCCESS(inpNumber) ((inpNumber) >= 0)
 

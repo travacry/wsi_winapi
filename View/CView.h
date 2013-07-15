@@ -19,7 +19,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
 
-//компаненты:
+//РєРѕРјРїР°РЅРµРЅС‚С‹:
 
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QTabWidget>

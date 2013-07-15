@@ -16,7 +16,7 @@ CModel::CModel()
     SetListMapAccess = (getListAccess)QLibrary::resolve(file,"getListAccess");
 }
 
-//генераторы: data view to QStandardItemModel
+//РіРµРЅРµСЂР°С‚РѕСЂС‹: data view to QStandardItemModel
 
 void CModel::genMapWin(VERWIN& ver)
 {
